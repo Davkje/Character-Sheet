@@ -15,12 +15,12 @@ body {
 }
 
 main  {
+    position: relative;
     background-color: rgb(216, 216, 216);
-    width: 90vw;
+    width: 98vw;
     max-width: 700px;
-    height: 100vh;
+    // height: 90vh;
     margin: auto;
-    margin-top: 1rem;
 }
 
 header  {
@@ -86,10 +86,12 @@ header  {
 }
 
 .skills {
+    background-color: rgb(96, 81, 65);
     grid-column: span 12;
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     grid-template-rows: repeat(10, 1fr);
+    padding: 0 1px 2px 1px;
     .box-header {
         grid-column: span 12;
         grid-row: span 1;
@@ -99,27 +101,26 @@ header  {
     h2 {
         font-weight: lighter;
         font-size: large;
-        width: 30%;
+        width: 50%;
         text-align: center;
         border-radius: 5px;
-        background-color: rgb(198, 198, 198);
     }
     .skill-row {
-        background-color: rgb(198, 198, 198);
         grid-column: span 6;
         display: flex;
         justify-content: space-between;
         font-size: .8rem;
-        padding: 2px 0 2px 0;
+        margin: 2px 1px 2px 1px;
         div {
             border: solid black 1px;
+            background-color: rgb(201, 174, 140);
             border-radius: 5px;
-            margin: 2px;
+            margin: 2px 1px 2px 1px;
             padding: 2px;
         }
         div:nth-child(1) {
             // background-color: yellow;
-            margin-left: 4px;
+            margin-left: 2px;
 
         }
         div:nth-child(2) {
@@ -132,7 +133,7 @@ header  {
         }
         div:nth-child(4) {
             // background-color: blue;
-            margin-right: 4px;
+            margin-right: 2px;
         }
     }
 }
@@ -142,13 +143,32 @@ header  {
 
 .bottom-section {
     background-color: rgb(44, 35, 35);
-    height: 20rem;
+    padding: 2px 2px 0 2px;
+    min-height: 8rem;
     display: grid;
     grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: repeat(5, 1fr);
 }
 
 .abilitys {
     grid-column: span 4;
     grid-row: span 1;
+}
+
+
+//---------------------------FOOTER-----------------------------
+
+footer {
+    background-color: rgb(103, 46, 46);
+    min-height:4rem;
+    display: grid;
+    align-content: center;
+    grid-template-columns: repeat(12, 1fr);
+    padding: 4px;
+    gap: 1px;
+    button {
+        grid-column: span 3;
+        height: 44px;
+        text-transform: uppercase;
+        font-size: .7rem;
+    }
 }
