@@ -2,7 +2,25 @@
 //---------------------------BASE-PHONE-----------------------------
 
 body {
-    background-color: rgb(114, 135, 148);
+    background-color: rgb(0, 0, 0);
+}
+
+header  {
+    z-index: 99;
+    background-color: rgb(0, 0, 0);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    h1 {
+        color: white;
+        font-weight: light;
+        font-size: larger;
+        text-transform: uppercase;
+    }
 }
 
 .box {
@@ -16,28 +34,21 @@ body {
 
 main  {
     position: relative;
-    background-color: rgb(216, 216, 216);
+    background-color: black;
     width: 98vw;
     max-width: 700px;
     // height: 90vh;
     margin: auto;
 }
 
-header  {
-    background-color: rgb(206, 206, 206);
-    display: flex;
-    justify-content: center;
-    h1 {
-        font-weight: light;
-        font-size: larger;
-    }
-}
+
 
 //---------------------------TOP-SECTION-----------------------------
 
 .top-section {
-    background-color: rgb(43, 43, 43);
-    padding: 2px 2px 0 2px;
+    // background-color: red;
+    padding: 0 2px 0 2px;
+    margin-top: 40px;
     min-height: 12rem;
     display: grid;
     grid-template-columns: repeat(12, 1fr);
@@ -78,7 +89,7 @@ header  {
 //---------------------------MID-SECTION-----------------------------
 
 .mid-section {
-    background-color: rgb(94, 36, 36);
+    // background-color: yellow;
     padding: 2px 2px 0 2px;
     min-height: 10rem;
     display: grid;
@@ -86,7 +97,7 @@ header  {
 }
 
 .skills {
-    background-color: rgb(96, 81, 65);
+    background-color: rgba($color: #ffffff, $alpha: 0.3);
     grid-column: span 12;
     display: grid;
     grid-template-columns: repeat(12, 1fr);
@@ -112,8 +123,8 @@ header  {
         font-size: .8rem;
         margin: 2px 1px 2px 1px;
         div {
-            border: solid black 1px;
-            background-color: rgb(201, 174, 140);
+            // border: solid black 1px;
+            background-color: rgba($color: #000000, $alpha: 0.2);
             border-radius: 5px;
             margin: 2px 1px 2px 1px;
             padding: 2px;
@@ -142,8 +153,9 @@ header  {
 
 
 .bottom-section {
-    background-color: rgb(44, 35, 35);
-    padding: 2px 2px 0 2px;
+    margin-bottom: 56px;
+    // background-color: blue;
+    padding: 2px 2px 2px 2px;
     min-height: 8rem;
     display: grid;
     grid-template-columns: repeat(12, 1fr);
@@ -158,17 +170,37 @@ header  {
 //---------------------------FOOTER-----------------------------
 
 footer {
-    background-color: rgb(103, 46, 46);
-    min-height:4rem;
+    background-color: rgb(0, 0, 0);
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 52px;
     display: grid;
     align-content: center;
     grid-template-columns: repeat(12, 1fr);
     padding: 4px;
     gap: 1px;
     button {
+        background-color: whtite;
         grid-column: span 3;
         height: 44px;
         text-transform: uppercase;
         font-size: .7rem;
+        font-weight: bold;
     }
 }
+
+
+// header  {
+//     background-color: rgb(206, 206, 206);
+//     position: fixed;
+//     top: 0;
+//     width: 100%;
+//     height: 32px;
+//     display: flex;
+//     justify-content: center;
+//     h1 {
+//         font-weight: light;
+//         font-size: larger;
+//     }
+// }
