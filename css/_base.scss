@@ -92,12 +92,12 @@ main  {
 .mid-section {
     // background-color: yellow;
     padding: 2px 2px 0 2px;
-    min-height: 10rem;
+    min-height: 1rem;
     display: grid;
     grid-template-columns: repeat(12, 1fr);
 }
 
-.skills {
+.skills-section {
     background-color: rgba($color: #ffffff, $alpha: 0.3);
     grid-column: span 12;
     display: grid;
@@ -148,6 +148,169 @@ main  {
             margin-right: 2px;
         }
     }
+}
+
+.feats-section {
+    background-color: rgba($color: #ffffff, $alpha: 0.3);
+    grid-column: span 12;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+    padding: 0 1px 2px 1px;
+    .box-header {
+        grid-column: span 12;
+        grid-row: span 1;
+        display: flex;
+        justify-content: center;
+    }
+    h2 {
+        font-weight: lighter;
+        font-size: large;
+        width: 50%;
+        text-align: center;
+        border-radius: 5px;
+    }
+    .skill-row {
+        grid-column: span 6;
+        display: flex;
+        justify-content: space-between;
+        font-size: .8rem;
+        margin: 2px 1px 2px 1px;
+        div {
+            // border: solid black 1px;
+            background-color: rgba($color: #000000, $alpha: 0.2);
+            border-radius: 5px;
+            margin: 2px 1px 2px 1px;
+            padding: 2px;
+        }
+        div:nth-child(1) {
+            // background-color: yellow;
+            margin-left: 2px;
+
+        }
+        div:nth-child(2) {
+            // background-color: green;
+            text-transform: uppercase;
+        }
+        div:nth-child(3) {
+            // background-color: red;
+            flex-grow: 2;
+        }
+        div:nth-child(4) {
+            // background-color: blue;
+            margin-right: 2px;
+        }
+    }
+}
+
+.actions-section {
+    background-color: rgba($color: #ffffff, $alpha: 0.3);
+    grid-column: span 12;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+    padding: 0 1px 2px 1px;
+    .box-header {
+        grid-column: span 12;
+        grid-row: span 1;
+        display: flex;
+        justify-content: center;
+    }
+    h2 {
+        font-weight: lighter;
+        font-size: large;
+        width: 50%;
+        text-align: center;
+        border-radius: 5px;
+    }
+    .skill-row {
+        grid-column: span 6;
+        display: flex;
+        justify-content: space-between;
+        font-size: .8rem;
+        margin: 2px 1px 2px 1px;
+        div {
+            // border: solid black 1px;
+            background-color: rgba($color: #000000, $alpha: 0.2);
+            border-radius: 5px;
+            margin: 2px 1px 2px 1px;
+            padding: 2px;
+        }
+        div:nth-child(1) {
+            // background-color: yellow;
+            margin-left: 2px;
+
+        }
+        div:nth-child(2) {
+            // background-color: green;
+            text-transform: uppercase;
+        }
+        div:nth-child(3) {
+            // background-color: red;
+            flex-grow: 2;
+        }
+        div:nth-child(4) {
+            // background-color: blue;
+            margin-right: 2px;
+        }
+    }
+}
+
+.inventory-section {
+    background-color: rgba($color: #ffffff, $alpha: 0.3);
+    grid-column: span 12;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+    padding: 0 1px 2px 1px;
+    .box-header {
+        grid-column: span 12;
+        grid-row: span 1;
+        display: flex;
+        justify-content: center;
+    }
+    h2 {
+        font-weight: lighter;
+        font-size: large;
+        width: 50%;
+        text-align: center;
+        border-radius: 5px;
+    }
+    .skill-row {
+        grid-column: span 6;
+        display: flex;
+        justify-content: space-between;
+        font-size: .8rem;
+        margin: 2px 1px 2px 1px;
+        div {
+            // border: solid black 1px;
+            background-color: rgba($color: #000000, $alpha: 0.2);
+            border-radius: 5px;
+            margin: 2px 1px 2px 1px;
+            padding: 2px;
+        }
+        div:nth-child(1) {
+            // background-color: yellow;
+            margin-left: 2px;
+
+        }
+        div:nth-child(2) {
+            // background-color: green;
+            text-transform: uppercase;
+        }
+        div:nth-child(3) {
+            // background-color: red;
+            flex-grow: 2;
+        }
+        div:nth-child(4) {
+            // background-color: blue;
+            margin-right: 2px;
+        }
+    }
+}
+
+.hidden {
+    display: none;
 }
 
 //---------------------------BOTTOM-SECTION-----------------------------

@@ -10,6 +10,8 @@
     <header>  
         <h1 class="main-header">Character Sheet</h1>
     </header>
+
+    <!--------- TOP SECTION --------->
     
     <main>
         <section class="top-section">
@@ -27,8 +29,10 @@
             <div class="prof box">SPELL DC 12</div>
         </section>
 
+        <!--------- MID SECTION --------->
+
         <section class="mid-section">
-            <div class="skills box">
+            <div class="skills-section box" id="skills-section">
                 <div class="box-header">
                     <h2 class="box">Skills</h2>
                 </div>
@@ -141,7 +145,27 @@
                     <div>+2</div>
                 </div>
             </div>
+            
+            <div class="feats-section box" id="feats-section">
+                <div class="box-header">
+                    <h2 class="box">Features</h2>
+                </div>
+            </div>
+
+            <div class="actions-section box" id="actions-section">
+                <div class="box-header">
+                    <h2 class="box">Actions</h2>
+                </div>
+            </div>
+
+            <div class="inventory-section box" id="inventory-section">
+                <div class="box-header">
+                    <h2 class="box">Inventory</h2>
+                </div>
+            </div>
         </section>
+
+        <!--------- BOTTOM SECTION --------->
 
         <section class="bottom-section">
             <div class="abilitys box">Strength</div>
@@ -156,13 +180,13 @@
 
     <footer>
         <div class="footer-container">
-            <button class="box">Skills</button>
-            <button class="box">Feats</button>
-            <button class="box">Actions</button>
-            <button class="box">Inventory</button>
+            <button class="box" id="skills-btn">Skills</button>
+            <button class="box" id="feats-btn">Feats</button>
+            <button class="box" id="actions-btn">Actions</button>
+            <button class="box" id="inventory-btn">Inventory</button>
         </div>    
     </footer>
-
+    <script src="script.js"></script>
 </body>
 </html>
 
