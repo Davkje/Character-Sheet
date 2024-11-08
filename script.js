@@ -28,20 +28,49 @@ inventoryBtn.addEventListener('click', toggleInventoryVisible); //Add Click to S
 
 function toggleSkillsVisible() { 
     console.log('show skills')
-    skillsSection.classList.add('hidden');
+    if (featsSection.classList.contains('hidden') && actionsSection.classList.contains('hidden') && inventorySection.classList.contains('hidden')) {
+        return;
+    } else {
+        skillsSection.classList.remove('hidden');
+        featsSection.classList.add('hidden');
+        actionsSection.classList.add('hidden');
+        inventorySection.classList.add('hidden');
+    }
 }
 
 function toggleFeatsVisible() { 
     console.log('show feats')
-
+    if (skillsSection.classList.contains('hidden') && actionsSection.classList.contains('hidden') && inventorySection.classList.contains('hidden')) {
+        return;
+    } else {
+        skillsSection.classList.add('hidden');
+        featsSection.classList.remove('hidden');
+        actionsSection.classList.add('hidden');
+        inventorySection.classList.add('hidden');
+    }
 }
 
 function toggleActionsVisible() { 
     console.log('show actions')
-
+    if (skillsSection.classList.contains('hidden') && featsSection.classList.contains('hidden') && inventorySection.classList.contains('hidden')) {
+        return;
+    } else {
+        skillsSection.classList.add('hidden');
+        featsSection.classList.add('hidden');
+        actionsSection.classList.remove('hidden');
+        inventorySection.classList.add('hidden');
+    }
 }
 
 function toggleInventoryVisible() { 
     console.log('show inventory')
+    if (skillsSection.classList.contains('hidden') && featsSection.classList.contains('hidden') && actionsSection.classList.contains('hidden')) {
+        return;
+    } else {
+        skillsSection.classList.add('hidden');
+        featsSection.classList.add('hidden');
+        actionsSection.classList.add('hidden');
+        inventorySection.classList.remove('hidden');
+    }
 
 }
