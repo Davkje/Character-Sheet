@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Character Sheet</title>
     <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
     <header>  
@@ -16,11 +17,17 @@
         <!--------- TOP SECTION --------->
 
         <section class="top-section">
-            <div class="menu box">menu</div>
+            <div class="menu box">
+                <span class="material-icons menu-icon">menu</span>
+            </div>
             <div class="name box">Vilsen Varg</div>
-            <div class="settings box">set</div>
+            <div class="settings box">
+                <span class="material-icons settings-icon">settings</span>
+            </div>
             <div class="class-level box">Half-Elf<br>Druid 2</div>
-            <div class="picture box">picture</div>
+            <div class="picture box">
+                <img src="assets/vilsen_varg.png" alt="Profile Pic">
+            </div>
             <div class="hp-dice box">18 HP<br> 2d8</div>
             <div class="prof box">AC 13 (Shield 15)</div>
             <div class="prof box">INIT +2</div>
@@ -188,7 +195,7 @@
                     <h2 class="box">Inventory</h2>
                 </div>
                 <div class="inventory-row box">
-                    <div>Bone Blub 1d4</div>
+                    <div>Bone Club 1d4</div>
                     <div>Leather Armour</div>
                     <div>Shield AC +2</div>
                     <div>Rope 50ft</div>
@@ -211,6 +218,35 @@
             <div class="abilitys box">Wisdom</div>
             <div class="abilitys box">Charisma</div>
         </section>
+
+        <div class="ability-container">
+            <div class="box-header">
+                <h3 class="box">Strength</h3>
+            </div>
+            <div class="box">
+                <span>Saving Throw</span>
+                <span>+4</span>
+            </div>
+            <div class="box">
+                <span>Ability Check</span>
+                <span>+2</span>
+            </div>
+            <div class="skill-column">
+                <div class="skill-row box">
+                    <div>O</div>
+                    <div>Dex</div>
+                    <div>Animal Handling</div>
+                    <div>+2</div>
+                </div>
+                <div class="skill-row box">
+                    <div>O</div>
+                    <div>Dex</div>
+                    <div>Arcana</div>
+                    <div>+2</div>
+                </div>
+            </div>
+            <span>X</span>
+        </div>
 
     </main>
 
