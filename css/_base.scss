@@ -7,7 +7,7 @@ body {
 
 header  {
     z-index: 99;
-    background-color: rgb(0, 0, 0);
+    background-color: $black;
     position: fixed;
     top: 0;
     width: 100%;
@@ -28,7 +28,7 @@ img {
 }
 
 .box {
-    background-color: antiquewhite;
+    background-color: $maincolor;
     border-radius: 5px;
     margin: 2px;
     display: flex;
@@ -39,7 +39,7 @@ img {
 
 main  {
     position: relative;
-    background-color: black;
+    background-color: $black;
     width: 98vw;
     max-width: 500px;
     min-height: 91vh;
@@ -48,6 +48,23 @@ main  {
 
 .material-icons {
     color: $black;
+}
+
+.closing-btn {
+    align-self: flex-end;
+    color: $grey;
+    background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	cursor: pointer;
+	outline: inherit;
+    &:hover {
+        color: $grey;
+    }
+    &:active {
+        color: $white;
+    }
 }
 
 //---------------------------TOP-SECTION-----------------------------
@@ -99,7 +116,6 @@ main  {
     }
 }
 
-
 .hp-dice {
     grid-column: span 4;
     grid-row: span 2;
@@ -120,7 +136,7 @@ main  {
 }
 
 .skills-section {
-    background-color: rgba($color: #ffffff, $alpha: 0.3);
+    background-color: $trans-white;
     grid-column: span 12;
     display: grid;
     grid-template-columns: repeat(12, 1fr);
@@ -147,7 +163,7 @@ main  {
         margin: 2px 1px 2px 1px;
         div {
             // border: solid black 1px;
-            background-color: rgba($color: #000000, $alpha: 0.2);
+            background-color: $trans-black;
             border-radius: 5px;
             margin: 2px 1px 2px 1px;
             padding: 2px;
@@ -173,7 +189,7 @@ main  {
 }
 
 .feats-section {
-    background-color: rgba($color: #ffffff, $alpha: 0.3);
+    background-color: $trans-white;
     grid-column: span 12;
     display: grid;
     grid-template-columns: repeat(12, 1fr);
@@ -199,7 +215,7 @@ main  {
         margin: 2px 1px 2px 1px;
         div {
             // border: solid black 1px;
-            background-color: rgba($color: #000000, $alpha: 0.2);
+            background-color: $trans-black;
             border-radius: 5px;
             margin: 2px 1px 2px 1px;
             padding: 2px;
@@ -225,7 +241,7 @@ main  {
 }
 
 .actions-section {
-    background-color: rgba($color: #ffffff, $alpha: 0.3);
+    background-color: $trans-white;
     grid-column: span 12;
     display: grid;
     grid-template-columns: repeat(12, 1fr);
@@ -251,7 +267,7 @@ main  {
         font-size: .8rem;
         margin: 2px 1px 2px 1px;
         div {
-            background-color: rgba(0, 0, 0, 0.2);
+            background-color: $trans-black;
             border-radius: 5px;
             margin: 2px 1px 2px 1px;
             padding: 2px;
@@ -274,7 +290,7 @@ main  {
 }
 
 .inventory-section {
-    background-color: rgba($color: #ffffff, $alpha: 0.3);
+    background-color: $trans-white;
     grid-column: span 12;
     display: grid;
     grid-template-columns: repeat(12, 1fr);
@@ -299,7 +315,7 @@ main  {
         font-size: .8rem;
         margin: 2px 1px 2px 1px;
         div {
-            background-color: rgba(0, 0, 0, 0.2);
+            background-color: $trans-black;
             border-radius: 5px;
             margin: 2px 1px 2px 1px;
             padding: 2px;
@@ -310,9 +326,17 @@ main  {
     }
 }
 
-.ability-container {
-    background-color: red;
-    margin: 0 1rem 0 1rem;
+.ability-section {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 70vW;
+    display: flex;
+    flex-direction: column;
+    background-color: $black;
+    border: solid $darkest 2px;
+    border-radius: 5px;
 }
 
 .skill-row {
@@ -323,7 +347,7 @@ main  {
     margin: 2px 2rem 2px 2rem;
     div {
         // border: solid black 1px;
-        background-color: rgba($color: #000000, $alpha: 0.2);
+        background-color: $trans-black;
         border-radius: 5px;
         margin: 2px 1px 2px 1px;
         padding: 2px;
@@ -355,8 +379,8 @@ main  {
 
 
 .bottom-section {
-    margin-bottom: 50px;
-    // background-color: blue;
+    // margin-bottom: 50px;
+    background-color: $black;
     padding: 2px 2px 2px 2px;
     min-height: 8rem;
     display: grid;
@@ -372,7 +396,7 @@ main  {
 //---------------------------FOOTER-----------------------------
 
 footer {
-    background-color: rgb(0, 0, 0);
+    background-color: $black;
     position: fixed;
     bottom: 0;
     width: 100%;
@@ -389,7 +413,7 @@ footer {
         gap: 1px;
         button {
             background-color: whtite;
-            grid-column: span 3;
+            grid-column: span 4;
             height: 44px;
             text-transform: uppercase;
             font-size: .7rem;

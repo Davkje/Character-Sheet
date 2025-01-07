@@ -2,7 +2,6 @@
 
 // Map button IDs to section IDs
 const sectionsMap = {
-    'skills-btn': 'skills-section',
     'feats-btn': 'feats-section',
     'actions-btn': 'actions-section',
     'inventory-btn': 'inventory-section',
@@ -34,91 +33,57 @@ function toggleSectionVisible(buttonId) {
     console.log(`show ${targetSectionId.replace('-section', '')}`);
 }
 
+//
 
+const abilitiesMap = {
+    'str-btn': 'str-section',
+    'dex-btn': 'dex-section',
+    'con-btn': 'con-section',
+    'int-btn': 'int-section',
+    'wis-btn': 'wis-section',
+    'cha-btn': 'cha-section',
+};
 
+// Cache all buttons and sections
+const abilityButtons = Object.keys(abilitiesMap).map(id => document.querySelector(`#${id}`));
+const abilitySections = Object.values(abilitiesMap).map(id => document.querySelector(`#${id}`));
 
+// Add event listeners for ability buttons
+abilityButtons.forEach(button => {
+    button.addEventListener('click', (event) => {
+        event.stopPropagation(); // Prevent this click from triggering the document click handler
+        toggleAbilitySection(button.id);
+    });
+});
 
+// Close button functionality
+document.querySelectorAll('.closing-btn').forEach(button => {
+    button.addEventListener('click', (event) => {
+        event.stopPropagation(); // Prevent the document click handler from firing
+        const section = button.closest('.ability-section');
+        if (section) section.classList.add('hidden');
+    });
+});
 
+// Close any open section when clicking outside
+document.addEventListener('click', (event) => {
+    abilitySections.forEach(section => {
+        // Close the section only if it is visible and the click is outside of it
+        if (!section.classList.contains('hidden') && !section.contains(event.target)) {
+            section.classList.add('hidden');
+        }
+    });
+});
 
+// Function to toggle the visibility of ability sections
+function toggleAbilitySection(buttonId) {
+    const targetSectionId = abilitiesMap[buttonId];
 
-
-
-
-
-
-
-
-// MY OLD CODE
-
-// // VARIABLES
-
-// // Map button IDs to section IDs
-// const sectionsMap = {
-//     'skills-btn': 'skills-section',
-//     'feats-btn': 'feats-section',
-//     'actions-btn': 'actions-section',
-//     'inventory-btn': 'inventory-section',
-// };
-
-
-// //EVENTS
-
-// skillsBtn.addEventListener('click', toggleSkillsVisible); //Add Click to Skills Button
-
-// featsBtn.addEventListener('click', toggleFeatsVisible); //Add Click to Skills Button
-
-// actionsBtn.addEventListener('click', toggleActionsVisible); //Add Click to Skills Button
-
-// inventoryBtn.addEventListener('click', toggleInventoryVisible); //Add Click to Skills Button
-
-
-// // FUNCTIONS
-
-// function toggleSkillsVisible() { 
-//     console.log('show skills')
-//     if (featsSection.classList.contains('hidden') && actionsSection.classList.contains('hidden') && inventorySection.classList.contains('hidden')) {
-//         return;
-//     } else {
-//         skillsSection.classList.remove('hidden');
-//         featsSection.classList.add('hidden');
-//         actionsSection.classList.add('hidden');
-//         inventorySection.classList.add('hidden');
-//     }
-// }
-
-// function toggleFeatsVisible() { 
-//     console.log('show feats')
-//     if (skillsSection.classList.contains('hidden') && actionsSection.classList.contains('hidden') && inventorySection.classList.contains('hidden')) {
-//         return;
-//     } else {
-//         skillsSection.classList.add('hidden');
-//         featsSection.classList.remove('hidden');
-//         actionsSection.classList.add('hidden');
-//         inventorySection.classList.add('hidden');
-//     }
-// }
-
-// function toggleActionsVisible() { 
-//     console.log('show actions')
-//     if (skillsSection.classList.contains('hidden') && featsSection.classList.contains('hidden') && inventorySection.classList.contains('hidden')) {
-//         return;
-//     } else {
-//         skillsSection.classList.add('hidden');
-//         featsSection.classList.add('hidden');
-//         actionsSection.classList.remove('hidden');
-//         inventorySection.classList.add('hidden');
-//     }
-// }
-
-// function toggleInventoryVisible() { 
-//     console.log('show inventory')
-//     if (skillsSection.classList.contains('hidden') && featsSection.classList.contains('hidden') && actionsSection.classList.contains('hidden')) {
-//         return;
-//     } else {
-//         skillsSection.classList.add('hidden');
-//         featsSection.classList.add('hidden');
-//         actionsSection.classList.add('hidden');
-//         inventorySection.classList.remove('hidden');
-//     }
-
-// }
+    abilitySections.forEach(section => {
+        if (section.id === targetSectionId) {
+            section.classList.toggle('hidden');
+        } else {
+            section.classList.add('hidden');
+        }
+    });
+}
