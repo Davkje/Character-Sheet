@@ -2,7 +2,8 @@
 //---------------------------BASE-PHONE-----------------------------
 
 body {
-    background-color: rgb(234, 234, 234);
+    background-color: $black;
+    position: relative;
 }
 
 header  {
@@ -331,12 +332,14 @@ main  {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 70vW;
+    width: 70vw;
+    padding: 1rem;
     display: flex;
     flex-direction: column;
     background-color: $black;
     border: solid $darkest 2px;
     border-radius: 5px;
+    box-shadow: 1px 1px 50px $darkest;
 }
 
 .skill-row {
@@ -421,3 +424,20 @@ footer {
         }
     }
 }
+
+// ------- BLUR --------
+.content-blur {
+    filter: blur(5px); /* Adjust the blur level */
+    pointer-events: none; /* Prevent interaction when blurred */
+  }
+  
+  /* Optional: Add a dim background effect when the ability section is visible */
+  .dim-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.4); /* Semi-transparent black */
+    z-index: 10; /* Ensure it sits below the ability section */
+  }

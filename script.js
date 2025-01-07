@@ -33,8 +33,6 @@ function toggleSectionVisible(buttonId) {
     console.log(`show ${targetSectionId.replace('-section', '')}`);
 }
 
-//
-
 const abilitiesMap = {
     'str-btn': 'str-section',
     'dex-btn': 'dex-section',
