@@ -11,6 +11,8 @@ const sectionsMap = {
     'inventory-btn': 'inventory-section',
 };
 
+const topSection = document.querySelector('#topSection');
+
 // Cache buttons and sections
 const buttons = Object.keys(sectionsMap).map(id => document.querySelector(`#${id}`));
 const sections = Object.values(sectionsMap).map(id => document.querySelector(`#${id}`));
@@ -20,22 +22,6 @@ const sections = Object.values(sectionsMap).map(id => document.querySelector(`#$
 buttons.forEach(button => {
     button.addEventListener('click', () => toggleSectionVisible(button.id));
 });
-
-// FUNCTIONS
-
-function toggleSectionVisible(buttonId) {
-    const targetSectionId = sectionsMap[buttonId];
-    
-    sections.forEach(section => {
-        if (section.id === targetSectionId) {
-            section.classList.remove('hidden');
-        } else {
-            section.classList.add('hidden');
-        }
-    });
-    
-    console.log(`show ${targetSectionId.replace('-section', '')}`);
-}
 
 const abilitiesMap = {
     'str-btn': 'str-section',
@@ -77,6 +63,23 @@ document.addEventListener('click', (event) => {
     });
 });
 
+
+// FUNCTIONS
+
+function toggleSectionVisible(buttonId) {
+    const targetSectionId = sectionsMap[buttonId];
+
+    sections.forEach(section => {
+        if (section.id === targetSectionId) {
+            section.classList.remove('hidden');
+        } else {
+            section.classList.add('hidden');
+        }
+    });
+
+    console.log(`show ${targetSectionId.replace('-section', '')}`);
+}
+
 // Function to toggle the visibility of ability sections
 function toggleAbilitySection(buttonId) {
     const targetSectionId = abilitiesMap[buttonId];
@@ -89,3 +92,34 @@ function toggleAbilitySection(buttonId) {
         }
     });
 }
+
+
+function printTopSection() {
+    topSection.innerHTML = `
+        <div class="menu box">
+            <span class="material-icons menu-icon">menu</span>
+        </div>
+        <div class="name box">${stats.name}</div>
+        <div class="settings box">
+            <span class="material-icons settings-icon">settings</span>
+        </div>
+        <div class="class-level box">${stats.race}${stats.class}${stats.level}</div>
+        <div class="picture-container box">
+            <img class="picture" src="assets/vilsen_varg.png" alt="Profile Pic" />
+        </div>
+        <div class="hp-dice box">
+            <span>${stats.hp}</span>HP
+            <br />
+            <span>${stats.level}d8</span>
+        </div>
+        <div class="prof box">AC ${stats.armourClass}</div>
+        <div class="prof box">INIT +${stats.initiative}</div>
+        <div class="prof box">SPEED ${stats.speed}</div>
+        <div class="prof box">PROF +${stats.proficiency}</div>
+        <div class="prof box">SPELL ATK +${stats.spellAtk}</div>
+        <div class="prof box">SPELL DC ${stats.spellSave}</div>
+    `;
+}
+
+printTopSection();
+

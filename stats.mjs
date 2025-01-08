@@ -1,12 +1,12 @@
 const stats = {
     name: "Vilsen Varg",
-    race: "Half elf",
+    race: "Half-Elf",
     class: "Druid",
     level: 2,
     proficiency: 2,
     subclass: "Circle of Spores",
     hp: 18,
-    armourClass: 16,
+    armourClass: 15,
     speed: 30,
     initiative: 2,
     abilities: [
@@ -18,5 +18,8 @@ const stats = {
         { name: "Charisma", score: 10, modifier: 0 },
     ],
 };
+
+stats.spellAtk = stats.proficiency + stats.abilities.find(ability => ability.name === "Wisdom").modifier;
+stats.spellSave = 8 + stats.spellAtk;
 
 export default stats;
