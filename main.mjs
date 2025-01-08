@@ -1,3 +1,7 @@
+// IMPORTS
+
+import stats from "./stats.mjs"
+
 // VARIABLES
 
 // Map button IDs to section IDs
