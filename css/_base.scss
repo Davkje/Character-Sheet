@@ -2,13 +2,14 @@
 //---------------------------BASE-PHONE-----------------------------
 
 body {
-    background-color: $black;
+    background-color: $maindark;
     position: relative;
+    font-weight: bold;
 }
 
 header  {
     z-index: 99;
-    background-color: $black;
+    background-color: $maindark;
     position: fixed;
     top: 0;
     width: 100%;
@@ -29,8 +30,9 @@ img {
 }
 
 .box {
-    background-color: $maincolor;
+    background-color: $mainbright;
     border-radius: 5px;
+    border: solid $black 2px;
     margin: 2px;
     display: flex;
     align-items: center;
@@ -40,7 +42,7 @@ img {
 
 main  {
     position: relative;
-    background-color: $black;
+    background-color: $maindark;
     width: 98vw;
     max-width: 500px;
     min-height: 91vh;
@@ -48,7 +50,7 @@ main  {
 }
 
 .material-icons {
-    color: $black;
+    color: $maindark;
 }
 
 .closing-btn {
@@ -83,7 +85,7 @@ main  {
 .menu {
     grid-column: span 2;
     .menu-icon {
-        color: $black;
+        color: $maindark;
         font-size: 36px;
     }
 }
@@ -95,7 +97,7 @@ main  {
 .settings {
     grid-column: span 2;
     .settings-icon {
-        color: $black;
+        color: $maindark;
         font-size: 32px;
     }
 }
@@ -163,7 +165,7 @@ main  {
         font-size: .8rem;
         margin: 2px 1px 2px 1px;
         div {
-            // border: solid black 1px;
+            // border: solid maindark 1px;
             background-color: $trans-black;
             border-radius: 5px;
             margin: 2px 1px 2px 1px;
@@ -215,7 +217,7 @@ main  {
         font-size: .8rem;
         margin: 2px 1px 2px 1px;
         div {
-            // border: solid black 1px;
+            // border: solid maindark 1px;
             background-color: $trans-black;
             border-radius: 5px;
             margin: 2px 1px 2px 1px;
@@ -336,10 +338,10 @@ main  {
     padding: 1rem;
     display: flex;
     flex-direction: column;
-    background-color: $black;
-    border: solid $darkest 2px;
+    background-color: $maindark;
+    border: solid $black 2px;
     border-radius: 5px;
-    box-shadow: 1px 1px 50px $darkest;
+    box-shadow: 1px 1px 50px $black;
 }
 
 .skill-row {
@@ -349,7 +351,7 @@ main  {
     font-size: .8rem;
     margin: 2px 2rem 2px 2rem;
     div {
-        // border: solid black 1px;
+        // border: solid maindark 1px;
         background-color: $trans-black;
         border-radius: 5px;
         margin: 2px 1px 2px 1px;
@@ -383,7 +385,7 @@ main  {
 
 .bottom-section {
     // margin-bottom: 50px;
-    background-color: $black;
+    background-color: $maindark;
     padding: 2px 2px 2px 2px;
     min-height: 8rem;
     display: grid;
@@ -399,7 +401,7 @@ main  {
 //---------------------------FOOTER-----------------------------
 
 footer {
-    background-color: $black;
+    background-color: $maindark;
     position: fixed;
     bottom: 0;
     width: 100%;
@@ -424,20 +426,3 @@ footer {
         }
     }
 }
-
-// ------- BLUR --------
-.content-blur {
-    filter: blur(5px); /* Adjust the blur level */
-    pointer-events: none; /* Prevent interaction when blurred */
-  }
-  
-  /* Optional: Add a dim background effect when the ability section is visible */
-  .dim-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.4); /* Semi-transparent black */
-    z-index: 10; /* Ensure it sits below the ability section */
-  }
