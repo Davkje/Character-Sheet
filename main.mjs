@@ -1,6 +1,6 @@
 // IMPORTS
 
-import stats from "./stats.mjs"
+import stats from "./stats.mjs";
 
 // VARIABLES
 
@@ -11,18 +11,6 @@ const sectionsMap = {
     'inventory-btn': 'inventory-section',
 };
 
-const topSection = document.querySelector('#topSection');
-
-// Cache buttons and sections
-const buttons = Object.keys(sectionsMap).map(id => document.querySelector(`#${id}`));
-const sections = Object.values(sectionsMap).map(id => document.querySelector(`#${id}`));
-
-// EVENTS
-
-buttons.forEach(button => {
-    button.addEventListener('click', () => toggleSectionVisible(button.id));
-});
-
 const abilitiesMap = {
     'str-btn': 'strSection',
     'dex-btn': 'dexSection',
@@ -32,22 +20,32 @@ const abilitiesMap = {
     'cha-btn': 'chaSection',
 };
 
-// Cache all buttons and sections
+const topSection = document.querySelector('#topSection');
+
+// Cache buttons and sections
+const buttons = Object.keys(sectionsMap).map(id => document.querySelector(`#${id}`));
+
 const abilityButtons = Object.keys(abilitiesMap).map(id => document.querySelector(`#${id}`));
 const abilitySections = Object.values(abilitiesMap).map(id => document.querySelector(`#${id}`));
 
-// Add event listeners for ability buttons
+// EVENTS
+
+// Add event listeners for main and ability buttons
+buttons.forEach(button => {
+    button.addEventListener('click', () => toggleSection(button.id, sectionsMap));
+});
+
 abilityButtons.forEach(button => {
     button.addEventListener('click', (event) => {
-        event.stopPropagation(); // Prevent this click from triggering the document click handler
-        toggleAbilitySection(button.id);
+        event.stopPropagation();
+        toggleSection(button.id, abilitiesMap, true); // true indicates toggle mode
     });
 });
 
 // Close button functionality
 document.querySelectorAll('.closing-btn').forEach(button => {
     button.addEventListener('click', (event) => {
-        event.stopPropagation(); // Prevent the document click handler from firing
+        event.stopPropagation();
         const section = button.closest('.ability-section');
         if (section) section.classList.add('hidden');
     });
@@ -56,13 +54,11 @@ document.querySelectorAll('.closing-btn').forEach(button => {
 // Close any open section when clicking outside
 document.addEventListener('click', (event) => {
     abilitySections.forEach(section => {
-        // Close the section only if it is visible and the click is outside of it
         if (!section.classList.contains('hidden') && !section.contains(event.target)) {
             section.classList.add('hidden');
         }
     });
 });
-
 
 // FUNCTIONS
 
@@ -105,18 +101,11 @@ function printSkillSections() {
         charisma: document.querySelector("#chaSection"),
     };
 
-    console.log("Sections Object:", sections); // Debug: Check if sections are found
-
     Object.keys(stats.abilities).forEach(ability => {
         const abilityData = stats.abilities[ability];
         const section = sections[ability];
 
-        if (!section) {
-            console.warn(`No section found for ${ability}`); // Debug: Missing section
-            return;
-        }
-
-        console.log(`Updating section for ${ability}`); // Debug: Which section is being updated
+        if (!section) return;
 
         const skillRows = abilityData.skills
             .map(skill => `
@@ -133,6 +122,9 @@ function printSkillSections() {
                 <h3 class="box">${capitalize(ability)}</h3>
             </div>
             <div class="box">
+                <span>Score ${abilityData.score}</span>
+            </div>
+            <div class="box">
                 <span>Modifier ${abilityData.modifier >= 0 ? `+${abilityData.modifier}` : abilityData.modifier}</span>
             </div>
             <div class="box">
@@ -146,42 +138,36 @@ function printSkillSections() {
             <button name="closing-btn" class="closing-btn material-icons">close</button>
         `;
     });
+
+    document.querySelectorAll('.closing-btn').forEach(button => {
+        button.addEventListener('click', (event) => {
+            event.stopPropagation();
+            const section = button.closest('.ability-section');
+            if (section) section.classList.add('hidden');
+        });
+    });
 }
 
 function capitalize(str) {
     return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
-
-
-function toggleSectionVisible(buttonId) {
-    const targetSectionId = sectionsMap[buttonId];
+function toggleSection(buttonId, map, toggleMode = false) {
+    const targetSectionId = map[buttonId];
+    const sections = Object.values(map).map(id => document.querySelector(`#${id}`));
 
     sections.forEach(section => {
         if (section.id === targetSectionId) {
-            section.classList.remove('hidden');
-        } else {
-            section.classList.add('hidden');
-        }
-    });
-
-    console.log(`show ${targetSectionId.replace('-section', '')}`);
-}
-
-// Function to toggle the visibility of ability sections
-function toggleAbilitySection(buttonId) {
-    const targetSectionId = abilitiesMap[buttonId];
-
-    abilitySections.forEach(section => {
-        if (section.id === targetSectionId) {
-            section.classList.toggle('hidden');
+            if (toggleMode) {
+                section.classList.toggle('hidden');
+            } else {
+                section.classList.remove('hidden');
+            }
         } else {
             section.classList.add('hidden');
         }
     });
 }
-
-
 
 printTopSection();
 
