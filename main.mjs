@@ -13,12 +13,6 @@ const sectionsMap = {
 
 const topSection = document.querySelector('#topSection');
 
-const strSection = document.querySelector('#str-section');
-const dexSection = document.querySelector('#dex-section');
-const conSection = document.querySelector('#con-section');
-const intSection = document.querySelector('#int-section');
-const chaSection = document.querySelector('#cha-section');
-
 // Cache buttons and sections
 const buttons = Object.keys(sectionsMap).map(id => document.querySelector(`#${id}`));
 const sections = Object.values(sectionsMap).map(id => document.querySelector(`#${id}`));
@@ -30,12 +24,12 @@ buttons.forEach(button => {
 });
 
 const abilitiesMap = {
-    'str-btn': 'str-section',
-    'dex-btn': 'dex-section',
-    'con-btn': 'con-section',
-    'int-btn': 'int-section',
-    'wis-btn': 'wis-section',
-    'cha-btn': 'cha-section',
+    'str-btn': 'strSection',
+    'dex-btn': 'dexSection',
+    'con-btn': 'conSection',
+    'int-btn': 'intSection',
+    'wis-btn': 'wisSection',
+    'cha-btn': 'chaSection',
 };
 
 // Cache all buttons and sections
@@ -72,33 +66,6 @@ document.addEventListener('click', (event) => {
 
 // FUNCTIONS
 
-function toggleSectionVisible(buttonId) {
-    const targetSectionId = sectionsMap[buttonId];
-
-    sections.forEach(section => {
-        if (section.id === targetSectionId) {
-            section.classList.remove('hidden');
-        } else {
-            section.classList.add('hidden');
-        }
-    });
-
-    console.log(`show ${targetSectionId.replace('-section', '')}`);
-}
-
-// Function to toggle the visibility of ability sections
-function toggleAbilitySection(buttonId) {
-    const targetSectionId = abilitiesMap[buttonId];
-
-    abilitySections.forEach(section => {
-        if (section.id === targetSectionId) {
-            section.classList.toggle('hidden');
-        } else {
-            section.classList.add('hidden');
-        }
-    });
-}
-
 function printTopSection() {
     topSection.innerHTML = `
         <div class="menu box">
@@ -129,36 +96,91 @@ function printTopSection() {
 }
 
 function printSkillSections() {
-    dexSection.innerHTML = `
-        <div class="box-header">
-            <h3 class="box">Dexterity</h3>
-        </div>
-        <div class="box">
-            <span>Ability Check +${stats.abilities.dexterity.modifier}</span>
-        </div>
-        <div class="box">
-            <span> Saving Throw +${stats.abilities.dexterity.savingThrow.score}</span>
-        </div>
-        <div class="skill-column">
-            <div class="skill-row box">
-                <div class="material-icons">radio_button_checked</div>
-                <div>Acrobatics</div>
-                <div>+4</div>
+    const sections = {
+        strength: document.querySelector("#strSection"),
+        dexterity: document.querySelector("#dexSection"),
+        constitution: document.querySelector("#conSection"),
+        intelligence: document.querySelector("#intSection"),
+        wisdom: document.querySelector("#wisSection"),
+        charisma: document.querySelector("#chaSection"),
+    };
+
+    console.log("Sections Object:", sections); // Debug: Check if sections are found
+
+    Object.keys(stats.abilities).forEach(ability => {
+        const abilityData = stats.abilities[ability];
+        const section = sections[ability];
+
+        if (!section) {
+            console.warn(`No section found for ${ability}`); // Debug: Missing section
+            return;
+        }
+
+        console.log(`Updating section for ${ability}`); // Debug: Which section is being updated
+
+        const skillRows = abilityData.skills
+            .map(skill => `
+                <div class="skill-row box">
+                    <div class="material-icons">${skill.proficient ? "radio_button_checked" : "radio_button_unchecked"}</div>
+                    <div>${skill.name}</div>
+                    <div>${skill.score >= 0 ? `+${skill.score}` : skill.score}</div>
+                </div>
+            `)
+            .join("");
+
+        section.innerHTML = `
+            <div class="box-header">
+                <h3 class="box">${capitalize(ability)}</h3>
             </div>
-            <div class="skill-row box">
-                <div class="material-icons">radio_button_unchecked</div>
-                <div>Sleight of Hand</div>
-                <div>+2</div>
+            <div class="box">
+                <span>Modifier ${abilityData.modifier >= 0 ? `+${abilityData.modifier}` : abilityData.modifier}</span>
             </div>
-            <div class="skill-row box">
-                <div class="material-icons">radio_button_checked</div>
-                <div>Stealth</div>
-                <div>+2</div>
+            <div class="box">
+                <span>Saving Throw ${abilityData.savingThrow.score >= 0 ? `+${abilityData.savingThrow.score}` : abilityData.savingThrow.score}
+                    ${abilityData.savingThrow.proficient ? "(Proficient)" : ""}
+                </span>
             </div>
-		</div>
-		<button name="closing-btn" class="closing-btn material-icons">close</button>
-    `;
+            <div class="skill-column">
+                ${skillRows}
+            </div>
+            <button name="closing-btn" class="closing-btn material-icons">close</button>
+        `;
+    });
 }
+
+function capitalize(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
+
+
+function toggleSectionVisible(buttonId) {
+    const targetSectionId = sectionsMap[buttonId];
+
+    sections.forEach(section => {
+        if (section.id === targetSectionId) {
+            section.classList.remove('hidden');
+        } else {
+            section.classList.add('hidden');
+        }
+    });
+
+    console.log(`show ${targetSectionId.replace('-section', '')}`);
+}
+
+// Function to toggle the visibility of ability sections
+function toggleAbilitySection(buttonId) {
+    const targetSectionId = abilitiesMap[buttonId];
+
+    abilitySections.forEach(section => {
+        if (section.id === targetSectionId) {
+            section.classList.toggle('hidden');
+        } else {
+            section.classList.add('hidden');
+        }
+    });
+}
+
 
 
 printTopSection();
