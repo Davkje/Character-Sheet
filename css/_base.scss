@@ -4,7 +4,7 @@
 body {
     background-color: $maindark;
     position: relative;
-    font-weight: bold;
+    font-size: clamp(1rem, 4vw, 1.6rem); 
 }
 
 header  {
@@ -20,7 +20,7 @@ header  {
     h1 {
         color: white;
         font-weight: light;
-        font-size: larger;
+        font-size: clamp(1.2rem, 4vw, 1.8rem); 
         text-transform: uppercase;
     }
 }
@@ -43,8 +43,7 @@ img {
 main  {
     position: relative;
     background-color: $maindark;
-    width: 98vw;
-    max-width: 500px;
+    width: clamp(100px ,98vw, 550px) ;
     min-height: 91vh;
     margin: auto;
 }
@@ -92,6 +91,7 @@ main  {
 
 .name {
     grid-column: span 8;
+    font-size: clamp(1rem, 5vw, 1.8rem); 
 }
 
 .settings {
@@ -105,6 +105,7 @@ main  {
 .class-level {
     grid-column: span 4;
     grid-row: span 2;
+    flex-direction: column;
 }
 
 .picture-container {
@@ -122,6 +123,7 @@ main  {
 .hp-dice {
     grid-column: span 4;
     grid-row: span 2;
+    flex-direction: column;
 }
 
 .prof {
@@ -368,7 +370,7 @@ footer {
             grid-column: span 4;
             height: 44px;
             text-transform: uppercase;
-            font-size: .7rem;
+            font-size: .8rem;
             font-weight: bold;
         }
     }

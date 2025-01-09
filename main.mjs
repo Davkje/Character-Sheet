@@ -93,7 +93,6 @@ function toggleAbilitySection(buttonId) {
     });
 }
 
-
 function printTopSection() {
     topSection.innerHTML = `
         <div class="menu box">
@@ -103,13 +102,15 @@ function printTopSection() {
         <div class="settings box">
             <span class="material-icons settings-icon">settings</span>
         </div>
-        <div class="class-level box">${stats.race}${stats.class}${stats.level}</div>
+        <div class="class-level box">
+            <span>${stats.race}</span>
+            <span>${stats.class}${stats.level}</span>
+        </div>
         <div class="picture-container box">
             <img class="picture" src="assets/vilsen_varg.png" alt="Profile Pic" />
         </div>
         <div class="hp-dice box">
-            <span>${stats.hp}</span>HP
-            <br />
+            <span>${stats.hp}HP</span>
             <span>${stats.level}d8</span>
         </div>
         <div class="prof box">AC ${stats.armourClass}</div>
