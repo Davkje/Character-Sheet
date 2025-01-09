@@ -13,6 +13,12 @@ const sectionsMap = {
 
 const topSection = document.querySelector('#topSection');
 
+const strSection = document.querySelector('#str-section');
+const dexSection = document.querySelector('#dex-section');
+const conSection = document.querySelector('#con-section');
+const intSection = document.querySelector('#int-section');
+const chaSection = document.querySelector('#cha-section');
+
 // Cache buttons and sections
 const buttons = Object.keys(sectionsMap).map(id => document.querySelector(`#${id}`));
 const sections = Object.values(sectionsMap).map(id => document.querySelector(`#${id}`));
@@ -122,5 +128,39 @@ function printTopSection() {
     `;
 }
 
+function printSkillSections() {
+    dexSection.innerHTML = `
+        <div class="box-header">
+            <h3 class="box">Dexterity</h3>
+        </div>
+        <div class="box">
+            <span>Ability Check +${stats.abilities.dexterity.modifier}</span>
+        </div>
+        <div class="box">
+            <span> Saving Throw +${stats.abilities.dexterity.savingThrow.score}</span>
+        </div>
+        <div class="skill-column">
+            <div class="skill-row box">
+                <div class="material-icons">radio_button_checked</div>
+                <div>Acrobatics</div>
+                <div>+4</div>
+            </div>
+            <div class="skill-row box">
+                <div class="material-icons">radio_button_unchecked</div>
+                <div>Sleight of Hand</div>
+                <div>+2</div>
+            </div>
+            <div class="skill-row box">
+                <div class="material-icons">radio_button_checked</div>
+                <div>Stealth</div>
+                <div>+2</div>
+            </div>
+		</div>
+		<button name="closing-btn" class="closing-btn material-icons">close</button>
+    `;
+}
+
+
 printTopSection();
 
+printSkillSections();
