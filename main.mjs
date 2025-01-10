@@ -1,8 +1,8 @@
-// IMPORTS
+// ---------- IMPORTS ----------
 
 import stats from "./stats.mjs";
 
-// VARIABLES
+// ---------- VARIABLES ----------
 
 // Map button IDs to section IDs
 const sectionsMap = {
@@ -42,15 +42,6 @@ abilityButtons.forEach(button => {
     });
 });
 
-// Close button functionality
-document.querySelectorAll('.closing-btn').forEach(button => {
-    button.addEventListener('click', (event) => {
-        event.stopPropagation();
-        const section = button.closest('.ability-section');
-        if (section) section.classList.add('hidden');
-    });
-});
-
 // Close any open section when clicking outside
 document.addEventListener('click', (event) => {
     abilitySections.forEach(section => {
@@ -60,8 +51,9 @@ document.addEventListener('click', (event) => {
     });
 });
 
-// FUNCTIONS
+// ---------- FUNCTIONS ----------
 
+// PRINT TOP SECTION
 function printTopSection() {
     topSection.innerHTML = `
         <div class="menu box">
@@ -91,6 +83,7 @@ function printTopSection() {
     `;
 }
 
+// PRINT SKILLS
 function printSkillSections() {
     const sections = {
         strength: document.querySelector("#strSection"),
@@ -148,10 +141,12 @@ function printSkillSections() {
     });
 }
 
+// CAPITALIZE
 function capitalize(str) {
     return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
+// TOGGLE SECTIONS
 function toggleSection(buttonId, map, toggleMode = false) {
     const targetSectionId = map[buttonId];
     const sections = Object.values(map).map(id => document.querySelector(`#${id}`));
@@ -169,6 +164,7 @@ function toggleSection(buttonId, map, toggleMode = false) {
     });
 }
 
+// PRINT - RUNS ON STARTUP
 printTopSection();
 
 printSkillSections();

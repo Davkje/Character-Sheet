@@ -33,6 +33,10 @@ button {
     color: $black;
 }
 
+button:active {
+    background-color: $grey;
+}
+
 .box {
     background-color: $mainbright;
     border-radius: 5px;
@@ -57,7 +61,9 @@ main  {
 }
 
 .closing-btn {
-    align-self: flex-end;
+    position: absolute;
+    right: 1rem;
+    bottom: 4px;
     color: $grey;
     background: none;
 	color: inherit;
@@ -65,18 +71,19 @@ main  {
 	padding: 0;
 	cursor: pointer;
 	outline: inherit;
+    transition: font-weight 1s ease;
     &:hover {
-        color: $grey;
+        font-weight: bold;
     }
     &:active {
-        color: $white;
+        color: $trans-black;
+        background-color: $maindark;
     }
 }
 
 //---------------------------TOP-SECTION-----------------------------
 
 .top-section {
-    // background-color: red;
     padding: 0 2px 0 2px;
     margin-top: 40px;
     min-height: 12rem;
@@ -89,7 +96,7 @@ main  {
     grid-column: span 2;
     .menu-icon {
         color: $maindark;
-        font-size: 36px;
+        font-size: clamp(1.6rem, 8vw, 3rem); 
     }
 }
 
@@ -102,7 +109,7 @@ main  {
     grid-column: span 2;
     .settings-icon {
         color: $maindark;
-        font-size: 32px;
+        font-size: clamp(1.6rem, 8vw, 3rem); 
     }
 }
 
@@ -116,7 +123,6 @@ main  {
     grid-column: span 4;
     grid-row: span 2;
     overflow: hidden;
-
     .picture {
         width: 100%;
         height: 100%; // Ensures the image takes the full height of the container
@@ -134,15 +140,74 @@ main  {
     grid-column: span 4;
 }
 
-//---------------------------MID-SECTION-----------------------------
+//--------------- MID-SECTION (ABILITYS BUTTONS) ---------------
 
 .mid-section {
+    background-color: $maindark;
+    padding: 2px 2px 2px 2px;
+    min-height: 8rem;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+        .abilitys {
+        grid-column: span 4;
+        grid-row: span 1;
+    }
+}
+
+// ---------- HIDDEN ABILITY SECTIONS ----------
+
+.ability-section {
+    background-color: $maindark;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate( -50%, -50%);
+    width: clamp(30%, 80vw, 600px);
+    border: solid $black 2px;
+    border-radius: 5px;
+    padding: 2rem 1rem;
+    box-shadow: 0 0 350px $black ;
+    .skill-column {
+        margin-top: 1rem;
+        .skill-row {
+            display: flex;
+            justify-content: space-between;
+            // font-size: clamp(.8rem, 3vw, 1.2rem);
+            gap: 2px;
+            padding: 2px;
+            div {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: $trans-black;
+                border-radius: 5px;
+                height: clamp(1rem, 4vw, 2rem);
+            }
+            div:nth-child(1) { // Prof
+                flex: 1 1 15%;
+                font-size: clamp(.8rem, 3vw, 1.2rem);
+            }
+            div:nth-child(2) { // SKill Name
+                flex: 1 1 70%;
+            }
+            div:nth-child(3) { // Modifier
+                flex: 1 1 15%;
+            }
+        }
+    }
+    
+}
+
+// ---------- BOTTOM SECTION ----------
+
+.bottom-section {
     // background-color: yellow;
     padding: 2px 2px 0 2px;
     min-height: 1rem;
     display: grid;
     grid-template-columns: repeat(12, 1fr);
 }
+
 
 .feats-section {
     background-color: $trans-white;
@@ -282,76 +347,7 @@ main  {
     }
 }
 
-.ability-section {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 70vw;
-    padding: 1rem;
-    display: flex;
-    flex-direction: column;
-    background-color: $maindark;
-    border: solid $black 2px;
-    border-radius: 5px;
-    box-shadow: 1px 1px 50px $black;
-}
-
-.skill-row {
-    background-color: $maindark;
-    grid-column: span 6;
-    display: flex;
-    justify-content: space-between;
-    font-size: .8rem;
-    margin: 2px;
-    div {
-        // border: solid maindark 1px;
-        background-color: $mainbright;
-        border-radius: 5px;
-        margin: 2px 1px 2px 1px;
-        padding: 2px;
-    }
-    div:nth-child(1) {
-        height: 22px;
-        font-size: 14px;
-        margin-left: 2px;
-        flex: 0 0 20%;
-
-    }
-    div:nth-child(2) {
-        height: 22px;
-        flex-grow: 2;
-    }
-    div:nth-child(3) {
-        height: 22px;
-        flex: 0 0 20%;
-        margin-right: 2px;
-    }
-}
-
-.hidden {
-    display: none;
-}
-
-//---------------------------BOTTOM-SECTION-----------------------------
-
-
-.bottom-section {
-    // margin-bottom: 50px;
-    background-color: $maindark;
-    padding: 2px 2px 2px 2px;
-    min-height: 8rem;
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-}
-
-.abilitys {
-    grid-column: span 4;
-    grid-row: span 1;
-}
-
-
-//---------------------------FOOTER-----------------------------
+// ---------- FOOTER ----------
 
 footer {
     background-color: $maindark;
@@ -378,4 +374,10 @@ footer {
             font-weight: bold;
         }
     }
+}
+
+// -------- UTILITIES --------
+
+.hidden {
+    display: none;
 }
