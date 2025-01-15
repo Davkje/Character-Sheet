@@ -1,15 +1,14 @@
-
 //---------------------------BASE-PHONE-----------------------------
 
 body {
     background-color: $maindark;
     position: relative;
-    font-size: clamp(1rem, 4vw, 1.6rem); 
+    font-size: clamp(1rem, 4vw, 1.6rem);
 }
 
-header  {
+header {
     z-index: 99;
-    background-color: red;
+    background-color: $maindark;
     position: fixed;
     top: 0;
     width: 100%;
@@ -17,10 +16,11 @@ header  {
     display: flex;
     justify-content: center;
     align-items: center;
+
     h1 {
         color: white;
         font-weight: light;
-        font-size: clamp(1.2rem, 4vw, 1.8rem); 
+        font-size: clamp(1.2rem, 4vw, 1.8rem);
         text-transform: uppercase;
     }
 }
@@ -46,12 +46,13 @@ button:active {
     align-items: center;
     justify-content: center;
     text-align: center;
+    cursor: default;
 }
 
-main  {
+main {
     position: relative;
     background-color: $maindark;
-    width: clamp(100px ,98vw, 550px) ;
+    width: clamp(100px, 98vw, 550px);
     min-height: 91vh;
     margin: auto;
 }
@@ -66,15 +67,17 @@ main  {
     bottom: 4px;
     color: $grey;
     background: none;
-	color: inherit;
-	border: none;
-	padding: 0;
-	cursor: pointer;
-	outline: inherit;
+    color: inherit;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    outline: inherit;
     transition: font-weight 1s ease;
+
     &:hover {
         font-weight: bold;
     }
+
     &:active {
         color: $trans-black;
         background-color: $maindark;
@@ -94,22 +97,24 @@ main  {
 
 .menu {
     grid-column: span 2;
+
     .menu-icon {
         color: $maindark;
-        font-size: clamp(1.6rem, 8vw, 3rem); 
+        font-size: clamp(1.6rem, 8vw, 3rem);
     }
 }
 
 .name {
     grid-column: span 8;
-    font-size: clamp(1rem, 5vw, 1.8rem); 
+    font-size: clamp(1rem, 5vw, 1.8rem);
 }
 
 .settings {
     grid-column: span 2;
+
     .settings-icon {
         color: $maindark;
-        font-size: clamp(1.6rem, 8vw, 3rem); 
+        font-size: clamp(1.6rem, 8vw, 3rem);
     }
 }
 
@@ -123,6 +128,7 @@ main  {
     grid-column: span 4;
     grid-row: span 2;
     overflow: hidden;
+
     .picture {
         width: 100%;
         height: 100%; // Ensures the image takes the full height of the container
@@ -148,9 +154,17 @@ main  {
     min-height: 8rem;
     display: grid;
     grid-template-columns: repeat(12, 1fr);
-        .abilitys {
+
+    .abilitys {
         grid-column: span 4;
         grid-row: span 1;
+        transition: background-color .5s ease;
+
+        &:hover {
+            background-color: $white;
+            cursor: pointer;
+            border: none;
+        }
     }
 }
 
@@ -161,20 +175,23 @@ main  {
     position: fixed;
     top: 50%;
     left: 50%;
-    transform: translate( -50%, -50%);
+    transform: translate(-50%, -50%);
     width: clamp(30%, 80vw, 600px);
     border: solid $black 2px;
     border-radius: 5px;
     padding: 2rem 1rem;
     box-shadow: 0 0 350px $black ;
+
     .skill-column {
         margin-top: 1rem;
+
         .skill-row {
             display: flex;
             justify-content: space-between;
             // font-size: clamp(.8rem, 3vw, 1.2rem);
             gap: 2px;
             padding: 2px;
+
             div {
                 display: flex;
                 justify-content: center;
@@ -183,19 +200,25 @@ main  {
                 border-radius: 5px;
                 height: clamp(1rem, 4vw, 2rem);
             }
-            div:nth-child(1) { // Prof
+
+            div:nth-child(1) {
+                // Prof
                 flex: 1 1 15%;
                 font-size: clamp(.8rem, 3vw, 1.2rem);
             }
-            div:nth-child(2) { // SKill Name
+
+            div:nth-child(2) {
+                // SKill Name
                 flex: 1 1 70%;
             }
-            div:nth-child(3) { // Modifier
+
+            div:nth-child(3) {
+                // Modifier
                 flex: 1 1 15%;
             }
         }
     }
-    
+
 }
 
 // ---------- BOTTOM SECTION ----------
@@ -215,12 +238,14 @@ main  {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     padding: 0 1px 2px 1px;
+
     .box-header {
         grid-column: span 12;
         grid-row: span 1;
         display: flex;
         justify-content: center;
     }
+
     h2 {
         font-weight: lighter;
         font-size: large;
@@ -228,12 +253,14 @@ main  {
         text-align: center;
         border-radius: 5px;
     }
+
     .feats-row {
         grid-column: span 6;
         display: flex;
         justify-content: space-between;
         font-size: .8rem;
         margin: 2px 1px 2px 1px;
+
         div {
             // border: solid maindark 1px;
             background-color: $trans-black;
@@ -241,19 +268,23 @@ main  {
             margin: 2px 1px 2px 1px;
             padding: 2px;
         }
+
         div:nth-child(1) {
             // background-color: yellow;
             margin-left: 2px;
 
         }
+
         div:nth-child(2) {
             // background-color: green;
             text-transform: uppercase;
         }
+
         div:nth-child(3) {
             // background-color: red;
             flex-grow: 2;
         }
+
         div:nth-child(4) {
             // background-color: blue;
             margin-right: 2px;
@@ -267,12 +298,14 @@ main  {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     padding: 0 1px 2px 1px;
+
     .box-header {
         grid-column: span 12;
         grid-row: span 1;
         display: flex;
         justify-content: center;
     }
+
     h2 {
         font-weight: lighter;
         font-size: large;
@@ -280,6 +313,7 @@ main  {
         text-align: center;
         border-radius: 5px;
     }
+
     .action-row {
         grid-column: span 12;
         display: grid;
@@ -287,22 +321,27 @@ main  {
         justify-content: space-between;
         font-size: .8rem;
         margin: 2px 1px 2px 1px;
+
         div {
             background-color: $trans-black;
             border-radius: 5px;
             margin: 2px 1px 2px 1px;
             padding: 2px;
         }
+
         div:nth-child(1) {
             grid-column: span 3;
             margin-left: 2px;
         }
+
         div:nth-child(2) {
             grid-column: span 2;
         }
+
         div:nth-child(3) {
             grid-column: span 2;
         }
+
         div:nth-child(4) {
             grid-column: span 5;
             margin-right: 2px;
@@ -316,12 +355,14 @@ main  {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     padding: 0 1px 2px 1px;
+
     .box-header {
         grid-column: span 12;
         grid-row: span 1;
         display: flex;
         justify-content: center;
     }
+
     h2 {
         font-weight: lighter;
         font-size: large;
@@ -329,12 +370,14 @@ main  {
         text-align: center;
         border-radius: 5px;
     }
+
     .inventory-row {
         grid-column: span 12;
         display: flex;
         justify-content: space-between;
         font-size: .8rem;
         margin: 2px 1px 2px 1px;
+
         div {
             background-color: $trans-black;
             border-radius: 5px;
@@ -357,6 +400,7 @@ footer {
     height: 52px;
     display: flex;
     justify-content: center;
+
     .footer-container {
         display: grid;
         grid-template-columns: repeat(12, 1fr);
@@ -365,6 +409,7 @@ footer {
         max-width: 700px;
         padding: 4px;
         gap: 1px;
+
         button {
             background-color: whtite;
             grid-column: span 4;
@@ -372,6 +417,12 @@ footer {
             text-transform: uppercase;
             font-size: .8rem;
             font-weight: bold;
+            transition: background-color .5s ease;
+            &:hover {
+                background-color: $white;
+                cursor: pointer;
+                border: none;
+            }
         }
     }
 }
