@@ -1,26 +1,32 @@
 // ---------- IMPORTS ----------
 
 import stats from "./stats.mjs";
+import actions from "./actions.mjs";
+import items from "./inventory.mjs";
 
 // ---------- VARIABLES ----------
 
 // Map button IDs to section IDs
 const sectionsMap = {
-    'feats-btn': 'feats-section',
-    'actions-btn': 'actions-section',
-    'inventory-btn': 'inventory-section',
+    'featsBtn': 'featsSection',
+    'actionsBtn': 'actionsSection',
+    'inventoryBtn': 'inventorySection',
 };
 
 const abilitiesMap = {
-    'str-btn': 'strSection',
-    'dex-btn': 'dexSection',
-    'con-btn': 'conSection',
-    'int-btn': 'intSection',
-    'wis-btn': 'wisSection',
-    'cha-btn': 'chaSection',
+    'strBtn': 'strSection',
+    'dexBtn': 'dexSection',
+    'conBtn': 'conSection',
+    'intBtn': 'intSection',
+    'wisBtn': 'wisSection',
+    'chaBtn': 'chaSection',
 };
 
 const topSection = document.querySelector('#topSection');
+
+const actionsSection = document.querySelector('#actionsSection');
+const inventorySection = document.querySelector('#inventorySection');
+const featsSection = document.querySelector('#featsSection');
 
 // Cache buttons and sections
 const buttons = Object.keys(sectionsMap).map(id => document.querySelector(`#${id}`));
@@ -83,7 +89,7 @@ function printTopSection() {
     `;
 }
 
-// PRINT SKILLS
+// -------- PRINT SKILLS --------
 function printSkillSections() {
     const sections = {
         strength: document.querySelector("#strSection"),
@@ -141,6 +147,47 @@ function printSkillSections() {
     });
 }
 
+// -------- PRINT ACTIONS --------
+function printActions() {
+    actionsSection.innerHTML = `
+        <div class="box-header">
+            <h2 class="box">Actions</h2>
+        </div>
+        <div class="action-row box">
+            <div>Action</div>
+            <div>Hit/DC</div>
+            <div>Damage</div>
+            <div>Info</div>
+        </div>
+        ${actions.map((actions) => `
+        <div class="action-row box">
+            <div>${actions.name}</div>
+            <div>${actions.hitDc}</div>
+            <div>${actions.damage}</div>
+            <div>${actions.info}</div>
+        </div>`)
+        .join('')}
+    `;
+}
+
+function printInventory() {
+    inventorySection.innerHTML = `
+        <div class="box-header">
+            <h2 class="box">Inventory</h2>
+        </div>
+        <div class="inventory-row box">
+            <div>Item</div>
+            <div>Description</div>
+        </div>
+        ${items.map((item) => `
+        <div class="inventory-row box">
+            <div>${item.name}</div>
+            <div>${item.description}</div>
+        </div>`)
+        .join('')}
+    `;
+}
+
 // CAPITALIZE
 function capitalize(str) {
     return str.charAt(0).toUpperCase() + str.slice(1);
@@ -167,4 +214,8 @@ function toggleSection(buttonId, map, toggleMode = false) {
 // PRINT - RUNS ON STARTUP
 printTopSection();
 
+printActions();
+printInventory();
+
 printSkillSections();
+

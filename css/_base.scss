@@ -3,7 +3,7 @@
 body {
     background-color: $maindark;
     position: relative;
-    font-size: clamp(1rem, 4vw, 1.6rem);
+    font-size: clamp(1rem, 3vw, 1.2rem);
 }
 
 header {
@@ -34,7 +34,7 @@ button {
 }
 
 button:active {
-    background-color: $grey;
+    background-color: red;
 }
 
 .box {
@@ -62,17 +62,16 @@ main {
 }
 
 .closing-btn {
-    position: absolute;
-    right: 1rem;
-    bottom: 4px;
+    // position: absolute;
+    float: right;
     color: $grey;
     background: none;
     color: inherit;
     border: none;
     padding: 0;
+    margin-top: 16px;
     cursor: pointer;
     outline: inherit;
-    transition: font-weight 1s ease;
 
     &:hover {
         font-weight: bold;
@@ -179,7 +178,7 @@ main {
     width: clamp(30%, 80vw, 600px);
     border: solid $black 2px;
     border-radius: 5px;
-    padding: 2rem 1rem;
+    padding: 1rem 1rem;
     box-shadow: 0 0 350px $black ;
 
     .skill-column {
@@ -224,13 +223,28 @@ main {
 // ---------- BOTTOM SECTION ----------
 
 .bottom-section {
-    // background-color: yellow;
     padding: 2px 2px 0 2px;
     min-height: 1rem;
     display: grid;
     grid-template-columns: repeat(12, 1fr);
 }
 
+.box-header {
+    grid-column: span 12;
+    grid-row: span 1;
+    display: flex;
+    justify-content: center;
+    h2 {
+        font-weight: lighter;
+        font-size: large;
+        width: 50%;
+        text-align: center;
+        border-radius: 5px;
+    }
+    h3 {
+        width: 50%;
+    }
+}
 
 .feats-section {
     background-color: $trans-white;
@@ -239,27 +253,13 @@ main {
     grid-template-columns: repeat(12, 1fr);
     padding: 0 1px 2px 1px;
 
-    .box-header {
-        grid-column: span 12;
-        grid-row: span 1;
-        display: flex;
-        justify-content: center;
-    }
-
-    h2 {
-        font-weight: lighter;
-        font-size: large;
-        width: 50%;
-        text-align: center;
-        border-radius: 5px;
-    }
-
     .feats-row {
         grid-column: span 6;
         display: flex;
         justify-content: space-between;
         font-size: .8rem;
         margin: 2px 1px 2px 1px;
+        
 
         div {
             // border: solid maindark 1px;
@@ -298,31 +298,24 @@ main {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     padding: 0 1px 2px 1px;
-
-    .box-header {
-        grid-column: span 12;
-        grid-row: span 1;
-        display: flex;
-        justify-content: center;
-    }
-
-    h2 {
-        font-weight: lighter;
-        font-size: large;
-        width: 50%;
-        text-align: center;
-        border-radius: 5px;
-    }
+    margin-bottom: 52px;
 
     .action-row {
         grid-column: span 12;
         display: grid;
         grid-template-columns: repeat(12, 1fr);
         justify-content: space-between;
-        font-size: .8rem;
+        font-size: clamp(.8rem, 2vw, 1rem);
+        align-items: stretch;
         margin: 2px 1px 2px 1px;
+        &:nth-child(2) { // Column Info
+            font-weight: bold;
+        }
 
         div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
             background-color: $trans-black;
             border-radius: 5px;
             margin: 2px 1px 2px 1px;
@@ -355,37 +348,36 @@ main {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
     padding: 0 1px 2px 1px;
-
-    .box-header {
-        grid-column: span 12;
-        grid-row: span 1;
-        display: flex;
-        justify-content: center;
-    }
-
-    h2 {
-        font-weight: lighter;
-        font-size: large;
-        width: 50%;
-        text-align: center;
-        border-radius: 5px;
-    }
+    margin-bottom: 52px;
 
     .inventory-row {
         grid-column: span 12;
         display: flex;
-        justify-content: space-between;
-        font-size: .8rem;
+        align-items: stretch;
+        font-size: clamp(.8rem, 2vw, 1rem);
         margin: 2px 1px 2px 1px;
+        &:nth-child(2) { // Column Info
+            font-weight: bold;
+        }
 
         div {
+            display: flex;
+            justify-content: center;
+            align-items: center;
             background-color: $trans-black;
             border-radius: 5px;
             margin: 2px 1px 2px 1px;
             padding: 2px;
-            grid-column: span 3;
-            flex-grow: 1;
-            flex-wrap: wrap;
+        }
+
+        div:nth-child(1) { // ITEMS
+            flex: 1 1 35%;
+            margin-left: 2px;
+        }
+        
+        div:nth-child(2) { // DESCRIPTION
+            flex: 1 1 65%;
+            margin-right: 2px;
         }
     }
 }
